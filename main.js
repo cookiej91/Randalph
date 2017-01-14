@@ -9,9 +9,7 @@ var letters = [
   "Y", "Z"
 ]
 
-var usedLetters = [
-
-]
+var usedLetters = []
 
 function checkLetters(char) {
   if (usedLetters.includes(char)) {
@@ -21,12 +19,12 @@ function checkLetters(char) {
   }
 }
 
-function roll(){
+function roll() {
   if(usedLetters.length > 25) {
     reset();
     alert("Finished - Press Ok to restart Randalph");
-
   }
+
   letterPicked = letters[Math.floor(Math.random() * letters.length)];
   checkLetters(letterPicked);
 }
