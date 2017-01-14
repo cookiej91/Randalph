@@ -33,7 +33,6 @@ function roll(){
 
 rollClick.addEventListener("click", function(event) {
   roll();
-  console.log(letterPicked);
   rollClick.innerHTML = letterPicked;
 }, false);
 
