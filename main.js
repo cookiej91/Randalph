@@ -13,7 +13,7 @@ var usedLetters = [
 
 ]
 
-function checkLetters(char){
+function checkLetters(char) {
   if (usedLetters.includes(char)) {
     roll();
   } else {
@@ -22,9 +22,10 @@ function checkLetters(char){
 }
 
 function roll(){
-  if(usedLetters.length > 25){
-    alert("Finished");
+  if(usedLetters.length > 25) {
     reset();
+    alert("Finished - Press Ok to restart Randalph");
+
   }
   letterPicked = letters[Math.floor(Math.random() * letters.length)];
   checkLetters(letterPicked);
@@ -33,11 +34,11 @@ function roll(){
 rollClick.addEventListener("click", function(event) {
   roll();
   console.log(letterPicked);
-  rollClick.value = "hello";
+  rollClick.innerHTML = letterPicked;
 }, false);
 
 function reset() {
   usedLetters = [
-    
+
   ]
 }
