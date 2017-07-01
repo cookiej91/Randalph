@@ -22,7 +22,11 @@ function checkLetters(char) {
 function roll() {
   if(usedLetters.length > 25) {
     reset();
-    alert("Finished - Press Ok to restart Randalph");
+    //using sweetalert2 to produce a nicer alert box
+    swal({
+      type: "success",
+      text: "Finished - Press Ok to restart Randalph"
+    })
   }
 
   letterPicked = letters[Math.floor(Math.random() * letters.length)];
