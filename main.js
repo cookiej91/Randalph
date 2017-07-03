@@ -11,6 +11,7 @@ var letters = [
 
 var usedLetters = []
 
+//all letters that have been rolled go into a separate array
 function checkLetters(char) {
   if (usedLetters.includes(char)) {
     roll();
@@ -19,6 +20,8 @@ function checkLetters(char) {
   }
 }
 
+//if there are more than 25 letters in the userLetters array the alphabet is complete
+//a quick restart happens if you click okay by just emptying the usedLetters array
 function roll() {
   if(usedLetters.length > 25) {
     reset();
@@ -39,7 +42,5 @@ rollClick.addEventListener("click", function(event) {
 }, false);
 
 function reset() {
-  usedLetters = [
-
-  ]
+  usedLetters = []
 }
