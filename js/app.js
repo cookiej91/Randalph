@@ -26,10 +26,7 @@ function roll() {
   if(usedLetters.length > 25) {
     reset();
     //using sweetalert2 to produce a nicer alert box
-    swal({
-      type: "success",
-      text: "Finished - Press Ok to restart Randalph"
-    })
+    swal("The Alphabet has been complete!")
   }
 
   letterPicked = letters[Math.floor(Math.random() * letters.length)];
