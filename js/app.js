@@ -23,20 +23,29 @@ function checkLetters(char) {
 //if there are more than 25 letters in the userLetters array the alphabet is complete
 //a quick restart happens if you click okay by just emptying the usedLetters array
 function roll() {
-  if(usedLetters.length > 25) {
+  if(usedLetters.length > letters.length - 1) {
     reset();
     //using sweetalert2 to produce a nicer alert box
-    swal("The Alphabet has been complete!")
+    swal("The Alphabet has been complete!");
   }
-
   letterPicked = letters[Math.floor(Math.random() * letters.length)];
   checkLetters(letterPicked);
 }
 
 rollClick.addEventListener("click", function(event) {
   roll();
-  rollClick.innerHTML = letterPicked;
+  showText.innerHTML = letterPicked;
+  swal(letterPicked);
 }, false);
+
+//Need to implement AutoRoll with timer and Pause function
+autoRollClick.addEventListener("click", function(event) {
+  setInterval(roll(), 600);
+})
+
+pauseClick.addEventListener("click", function(event) {
+  clearInterval();
+})
 
 function reset() {
   usedLetters = []
