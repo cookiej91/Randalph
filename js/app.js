@@ -1,5 +1,7 @@
 var letterPicked = "";
 var rollClick = document.getElementById('rollClick');
+var usedLetters = []
+var hasRolled = false;
 
 var letters = [
   "A", "B", "C", "D", "E", "F",
@@ -8,8 +10,6 @@ var letters = [
   "S", "T", "U", "V", "W", "X",
   "Y", "Z"
 ]
-
-var usedLetters = []
 
 //all letters that have been rolled go into a separate array
 function checkLetters(char) {
@@ -23,13 +23,17 @@ function checkLetters(char) {
 //if there are more than 25 letters in the userLetters array the alphabet is complete
 //a quick restart happens if you click okay by just emptying the usedLetters array
 function roll() {
+  hasRolled = true;
   if(usedLetters.length > letters.length - 1) {
     reset();
     //using sweetalert2 to produce a nicer alert box
     swal("The Alphabet has been complete!");
   }
   letterPicked = letters[Math.floor(Math.random() * letters.length)];
+
   checkLetters(letterPicked);
+
+  timer();
 }
 
 rollClick.addEventListener("click", function(event) {
@@ -46,6 +50,14 @@ autoRollClick.addEventListener("click", function(event) {
 pauseClick.addEventListener("click", function(event) {
   clearInterval();
 })
+
+function timer() {
+ if(hasRolled === true) {
+   //count down 60 seconds
+   //set hasRolled back to original state
+   hasRolled = false;
+ }
+}
 
 function reset() {
   usedLetters = []
