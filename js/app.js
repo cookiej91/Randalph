@@ -1,7 +1,5 @@
 var letterPicked = "";
-var rollClick = document.getElementById('rollClick');
-var usedLetters = []
-var hasRolled = false;
+var usedLetters = [];
 
 var letters = [
   "A", "B", "C", "D", "E", "F",
@@ -32,32 +30,29 @@ function roll() {
   letterPicked = letters[Math.floor(Math.random() * letters.length)];
 
   checkLetters(letterPicked);
-
-  timer();
+  countdownTimer();
 }
+
+var timer = 0;
+
+function countdownTimer() {
+  if(timer > 60) {
+    swal("TIME IS UP");
+    return;
+  }
+  setTimeout(function() {
+    timer += 1;
+    countdownTimer();
+  }, 1000)
+}
+
+var rollClick = document.getElementById('rollClick');
 
 rollClick.addEventListener("click", function(event) {
   roll();
   showText.innerHTML = letterPicked;
   swal(letterPicked);
 }, false);
-
-//Need to implement AutoRoll with timer and Pause function
-autoRollClick.addEventListener("click", function(event) {
-  setInterval(roll(), 600);
-})
-
-pauseClick.addEventListener("click", function(event) {
-  clearInterval();
-})
-
-function timer() {
- if(hasRolled === true) {
-   //count down 60 seconds
-   //set hasRolled back to original state
-   hasRolled = false;
- }
-}
 
 function reset() {
   usedLetters = []
