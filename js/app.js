@@ -45,7 +45,7 @@ function countdownTimer() {
   setTimeout(function() {
     timer += 1;
     countdownTimer();
-  }, 50)
+  }, 60000)
 }
 
 
