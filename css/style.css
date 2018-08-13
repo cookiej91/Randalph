@@ -5,3 +5,7 @@
 #userLetter {
   float: left;
 }
+
+#showText {
+  font-size: 45px !important;
+}

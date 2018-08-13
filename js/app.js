@@ -1,7 +1,7 @@
 var letterPicked = "";
 var usedLetters = [];
 
-var letters = [
+const letters = [
   "A", "B", "C", "D", "E", "F",
   "G", "H", "I", "J", "K", "L",
   "M", "N", "O", "P", "Q", "R",
@@ -37,16 +37,19 @@ var timer = 0;
 
 function countdownTimer() {
   if(timer > 60) {
+    const alarmSound = new Audio('../sounds/roundend.mp3');
+    alarmSound.play();
     swal("TIME IS UP");
     return;
   }
   setTimeout(function() {
     timer += 1;
     countdownTimer();
-  }, 1000)
+  }, 50)
 }
 
-var rollClick = document.getElementById('rollClick');
+
+const rollClick = document.getElementById('rollClick');
 
 rollClick.addEventListener("click", function(event) {
   roll();
