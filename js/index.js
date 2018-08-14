@@ -1,4 +1,7 @@
 var letterPicked = "";
+const alarmSound = new Audio('../sounds/roundend.mp3');\
+//add audio for game finishing
+//const gameEndSound = new Audio('../sounds/gameEnd.mp3');
 var usedLetters = [];
 
 const letters = [
