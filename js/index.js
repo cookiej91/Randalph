@@ -40,7 +40,6 @@ var timer = 0;
 
 function countdownTimer() {
   if(timer > 60) {
-    const alarmSound = new Audio('../sounds/roundend.mp3');
     alarmSound.play();
     swal("TIME IS UP");
     return;
