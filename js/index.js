@@ -34,9 +34,6 @@ const letters = [
 let letterPicked = '';
 let usedLetters = [];
 
-// Timer for countdown after roll()
-let timer = 0;
-
 /**
  * Checks a letter that has been picked and pushes into an array
  * @char  {character} letter that has been picked
@@ -48,6 +45,9 @@ function checkLetters(char) {
         usedLetters.push(char);
     }
 }
+
+// Timer for countdown after roll()
+let timerRef;
 
 /**
  * Checks to see if usedLetters has the entire array from letters stored
@@ -64,24 +64,11 @@ function roll() {
 
     checkLetters(letterPicked);
 
-    countdownTimer();
-}
+    // Stops the current timer
+    clearInterval(timerRef);
 
-/**
- * Iteratively adds 1 to timer until timer reaches 60
- * Once timer has reached 60 - sound will play
- */
-function countdownTimer() {
-    if (timer > 60) {
-        alarmSound.play();
-        swal('TIME IS UP');
-        return;
-    }
-
-    setTimeout(function() {
-        timer += 1;
-        countdownTimer();
-    }, 60000);
+    // Starts the new timer
+    timerRef = countdownTimer();
 }
 
 rollClick.addEventListener(
@@ -93,6 +80,18 @@ rollClick.addEventListener(
     },
     false,
 );
+
+/**
+ * Iteratively adds 1 to timer until timer reaches 60
+ * Once timer has reached 60 - sound will play
+ */
+
+function countdownTimer() {
+    return setInterval(function() {
+        alarmSound.play();
+        swal('TIME IS UP');
+    }, 60000);
+}
 
 /**
  * A simple reset if usedLetters has reached its limit (removing all letters from array)
