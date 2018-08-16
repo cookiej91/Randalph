@@ -1,34 +1,10 @@
+const LETTERS = Array(26)
+    .fill()
+    .map((_, index) => String.fromCharCode(index + 65));
+
 const roundComplete = new Audio('../sounds/roundEnd.mp3');
-const rollClick = document.getElementById('rollClick');
 const gameComplete = new Audio('../sounds/gameComplete.mp3');
-const letters = [
-    'A',
-    'B',
-    'C',
-    'D',
-    'E',
-    'F',
-    'G',
-    'H',
-    'I',
-    'J',
-    'K',
-    'L',
-    'M',
-    'N',
-    'O',
-    'P',
-    'Q',
-    'R',
-    'S',
-    'T',
-    'U',
-    'V',
-    'W',
-    'X',
-    'Y',
-    'Z',
-];
+const rollClick = document.getElementById('rollClick');
 
 let letterPicked = '';
 let usedLetters = [];
@@ -53,14 +29,14 @@ let timerRef;
  * Randomly selects a new letter from letters array
  */
 function roll() {
-    if (usedLetters.length > letters.length - 1) {
+    if (usedLetters.length > LETTERS.length - 1) {
         gameComplete.play();
         reset();
         // Using sweetalert2 to produce a nicer alert box
-        swal('The Alphabet has been complete!');
+        swal('GAME END!');
     }
 
-    letterPicked = letters[Math.floor(Math.random() * letters.length)];
+    letterPicked = LETTERS[Math.floor(Math.random() * LETTERS.length)];
 
     checkLetters(letterPicked);
 
