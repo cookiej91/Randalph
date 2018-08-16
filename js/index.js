@@ -34,7 +34,13 @@ const letters = [
 let letterPicked = '';
 let usedLetters = [];
 
-// All letters that have been rolled get pushed into a separate array
+// Timer for countdown after roll()
+let timer = 0;
+
+/**
+ * Checks a letter that has been picked and pushes into an array
+ * @char  {character} letter that has been picked
+ */
 function checkLetters(char) {
     if (usedLetters.includes(char)) {
         roll();
@@ -43,11 +49,11 @@ function checkLetters(char) {
     }
 }
 
-// If there are more than 25 letters in the userLetters array the alphabet is complete
-// a quick restart happens if you click okay by just emptying the usedLetters array
+/**
+ * Checks to see if usedLetters has the entire array from letters stored
+ * Randomly selects a new letter from letters array
+ */
 function roll() {
-    hasRolled = true;
-
     if (usedLetters.length > letters.length - 1) {
         reset();
         // Using sweetalert2 to produce a nicer alert box
@@ -61,8 +67,10 @@ function roll() {
     countdownTimer();
 }
 
-let timer = 0;
-
+/**
+ * Iteratively adds 1 to timer until timer reaches 60
+ * Once timer has reached 60 - sound will play
+ */
 function countdownTimer() {
     if (timer > 60) {
         alarmSound.play();
@@ -76,7 +84,6 @@ function countdownTimer() {
     }, 60000);
 }
 
-// Roll the 'dice'
 rollClick.addEventListener(
     'click',
     function(event) {
@@ -87,7 +94,9 @@ rollClick.addEventListener(
     false,
 );
 
-// Game Reset - Removing all letters picked from usedLetters Array
+/**
+ * A simple reset if usedLetters has reached its limit (removing all letters from array)
+ */
 function reset() {
     usedLetters = [];
 }
