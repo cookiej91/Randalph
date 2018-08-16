@@ -1,11 +1,11 @@
 * {
-  text-align: center;
+    text-align: center;
 }
 
 #userLetter {
-  float: left;
+    float: left;
 }
 
 #showText {
-  font-size: 45px !important;
+    font-size: 45px !important;
 }
