@@ -1,7 +1,6 @@
-const alarmSound = new Audio('../sounds/roundend.mp3');
+const roundComplete = new Audio('../sounds/roundEnd.mp3');
 const rollClick = document.getElementById('rollClick');
-// Add audio for game finishing
-// Const gameEndSound = new Audio('../sounds/gameEnd.mp3');
+const gameComplete = new Audio('../sounds/gameComplete.mp3');
 const letters = [
     'A',
     'B',
@@ -55,6 +54,7 @@ let timerRef;
  */
 function roll() {
     if (usedLetters.length > letters.length - 1) {
+        gameComplete.play();
         reset();
         // Using sweetalert2 to produce a nicer alert box
         swal('The Alphabet has been complete!');
@@ -88,7 +88,7 @@ rollClick.addEventListener(
 
 function countdownTimer() {
     return setInterval(function() {
-        alarmSound.play();
+        roundComplete.play();
         swal('TIME IS UP');
     }, 60000);
 }
