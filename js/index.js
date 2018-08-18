@@ -2,7 +2,7 @@ const LETTERS = Array(26)
     .fill()
     .map((_, index) => String.fromCharCode(index + 65));
 
-const roundComplete = new Audio('../sounds/roundEnd.mp3');
+const roundComplete = new Audio('../sounds/roundComplete.mp3');
 const gameComplete = new Audio('../sounds/gameComplete.mp3');
 const rollClick = document.getElementById('rollClick');
 
