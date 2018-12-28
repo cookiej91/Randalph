@@ -49,7 +49,7 @@ function roll() {
 
 rollClick.addEventListener(
     'click',
-    function(event) {
+    function(e) {
         roll();
         showText.innerHTML = letterPicked;
         swal(letterPicked);
