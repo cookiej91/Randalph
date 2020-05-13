@@ -1,9 +1,8 @@
 const LETTERS = Array(26)
   .fill()
   .map((_, index) => String.fromCharCode(index + 65));
-
-const roundComplete = new Audio("../sounds/roundComplete.mp3");
-const gameComplete = new Audio("../sounds/gameComplete.mp3");
+const roundComplete = new Audio("./sounds/roundComplete.mp3");
+const gameComplete = new Audio("./sounds/gameComplete.mp3");
 const rollClick = document.getElementById("rollClick");
 
 let letterPicked = "";
@@ -62,9 +61,8 @@ rollClick.addEventListener(
  * Iteratively adds 1 to timer until timer reaches 60
  * Once timer has reached 60 - sound will play
  */
-
 function countdownTimer() {
-  return setInterval(() => {
+  setInterval(() => {
     roundComplete.play();
     swal("TIME IS UP");
   }, 60000);
